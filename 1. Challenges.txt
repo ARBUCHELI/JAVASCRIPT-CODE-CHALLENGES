@@ -1,0 +1,116 @@
+1. Challenges
+*************
+
+* Available Books
+-----------------
+	- Unlike Java or C++, JavaScript uses objects within a prototypal inheritance model.
+	- The class keyword was introduced in ES2015 or ES6.
+	- We can use class declarations as a replacement for functions.
+
+	* Challenge
+	  ---------
+		. Develop an inventory application for a bookstore.  Create a book class which provides information about different books in the store.
+		. Each book will have:
+			. Title.
+			. Author.
+			. ISBN.
+			. numCopies.
+
+		. You'll need a way to get each book's availability
+
+			getAvailability() => "out of stock" if 0 available copies, "low stock" if<10 copies and "in stock" otherwise
+
+		. You'll also need a function for selling the book
+			
+			sell(numSold) -> You substract numSold from numCopies.  If not numSold is passed, we can default the number of copies to sell to one.
+
+		. Lastly we need a restock(numCopies) function which takes a number of copies to restock an adds it to the total number of copies.  If no argument
+		is passed we can default the restock number to five.
+
+		. You should use JavaScript classes as well s a getter function for the availability method.
+
+	* Solution
+	----------
+		. Let's first find a solution using a function, and then we will refactor to a prototype.
+		. Anything written as a class can be written as a function.
+		. A book function will accept four arguments and set them on the instance of the book.
+		. Next we can declare the getAvailability function in the prototype.
+		. We declare this function in the prototype because we don't need to create a new instance of this function each time we make a new object.
+		We can declare it on the prototype and each book instance can use the prototype's function.
+		. We can follow the same structure to declare the sell and restock functions.
+		. Finally we can create a new book and test our restock and sell functions.
+
+		. Function: prototype
+		The prototype data property of a Function instance is used when the function is used as a constructor with the new operator. It will become the new object's prototype.
+
+		Description
+		When a function is called with new, the constructor's prototype property will become the resulting object's prototype.
+		
+		Example
+		function Ctor() {}
+		const inst = new Ctor();
+		console.log(Object.getPrototypeOf(inst) === Ctor.prototype); // true
+
+
+Solution with a function
+------------------------
+
+function Book(title, author, ISBN, numCopies) {
+    this.title = title;
+    this.author = author;
+    this.ISBN = ISBN;
+    this.numCopies = numCopies;
+}
+
+Book.prototype.getAvailability = function() {
+    if (this.numCopies === 0) {
+        return 'Out of stock';
+    } else if (this.numCopies < 10) {
+        return 'Low stock';
+    }
+    return 'In stock';
+}
+
+Book.prototype.sell = function(numCopiesSold = 1) {
+    this.numCopies -= numCopiesSold;
+}
+
+Book.prototype.restock = function(numCopiesStocked) {
+    this.numCopies += numCopiesStocked;
+}
+
+const HungerGames = new Book("Hunger Games", "Suzanne Collins", 123919, 5);
+console.log(HungerGames.getAvailability());
+HungerGames.restock(12);
+console.log(HungerGames.getAvailability());
+HungerGames.sell(17);
+console.log(HungerGames.getAvailability());
+
+		. Let's transition this function into a class component.
+		. We can think of a constructor as a blueprint for our book.
+		. Next we create the required functions as methods.
+		
+
+
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
