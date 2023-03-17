@@ -1,0 +1,69 @@
+* Movie object
+--------------
+	- Prototype chain: Unlike other programming languages, JavaScript uses objects to construct inheritance.
+	Each object has a private property which links to another object.  This object is known as prototype.
+
+	- The prototype object has a prototype of its own, and the chain continues until an object with a null prototype has been reached.
+
+	* Challenge
+          ---------
+	Build a movie object which takes in five arguments:
+		. Title.
+		. Director.
+		. Genre.
+		. Release year.
+		. Rating.
+		
+	The movie prototype should have a function called getOverview which logs the following overvies for each film:
+
+		. "<movie>, a <genre> film directed by <director> was released in <releaseYear>.  It received a rating of <rating>."
+
+	You can use to create your prototype, either:
+
+		. Class syntax:
+			class Movie {
+			...
+			}
+
+		. Function syntax:
+			function Movie() {
+			}
+
+	Once you create your movie object, create a few movies to test it out.
+
+	- To create object using functions, we capitalize the name to indicate that this function must be called with the "new" keyword.
+
+	- A constructor function is a blueprint for JavaScript objects.
+
+	- Remember: To add a function to the prototype we use the constructor function name followed by the prototype keyword and lastly the name of the function we want to add.
+
+	- We declare the function on the prototype so that each new copy or instance of the movie object doesn't recreate the function.
+
+	- Instead of using a function, with can use the class keyword.  This class keyword is only syntactical sugar and isn't comparable to object oriented programming languages
+	like Java.
+
+	
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
