@@ -74,3 +74,8 @@ const CrackingTheCodingInterview = new TechnicalBook(
 console.log(CrackingTheCodingInterview.availability);
 console.log(CrackingTheCodingInterview.getEdition());
 
+	- Inheritance is one of the foundational concepts of programming, so understanding JavaScript's prototypal inheritance is imperative to your understanding of the programming
+	language.
+
+	
+
