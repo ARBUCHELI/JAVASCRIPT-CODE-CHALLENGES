@@ -1,0 +1,90 @@
+Dynamic colors
+**************
+
+	- Closures: --> Functions that close over the lexical environment of their scope.  This allows us to access an outer function scope from an inner function.
+	- Examples of use: Filtering an array of items, of if we are creating a timeOut.
+
+	Challenge:
+	----------
+		. Use closures to create three different buttons.
+		. Each button will represent a different color.
+		. We'll change the background color of the document body, to the color value.
+		. Using a closure create a function called changeColor, that accepts a color value.
+		. When the button is clicked, the closure should be invoked and the body background color should be updated.
+
+	Solution:
+	---------
+		. In the index.html file we have three buttons.
+		. In the JavaScript file let's walk through three different ways we could update the body's background color.	
+	
+		. FIRST METHOD:
+			. Create three functions and three event listeners.
+			. The problem with this solution is that we end up with three copies of the same function doing the same task with different values.
+
+dynamic-colors.js
+-----------------
+
+//First approach.  Create three functions and three event listeners
+
+function makeBodyBlue() {
+    document.body.style.background = '#0f62fe';
+}
+
+function makeBodyPink() {
+    document.body.style.background = '#ff7eb6';
+}
+
+function makeBodyGreen() {
+    document.body.style.background = '#42be65';
+}
+
+document.querySelector("#blue").addEventListener('click', makeBodyBlue);
+document.querySelector("#pink").addEventListener('click', makeBodyPink);
+document.querySelector("#green").addEventListener('click', makeBodyGreen);
+
+	. SECOND METHOD:
+		. Instead we could have just one function that accepts a string value and updates the body's background color. This requires we pass the hexadecimal string as an argument,
+		each time the button is clicked.
+		. So let's refactor our solution to create a function that accepts a hexadecimal string as an argument.
+		. The next step is to update the event listeners.  Since we need to include the hex string as an argument for our callback function, we'll need to pass an arrow function
+		that calls our changeColor function
+
+dynamic-colors.js
+-----------------
+
+function changeColor(color) {
+    document.body.style.background = color;
+}
+
+
+document.querySelector("#blue").addEventListener('click', () => changeColor("#0f62fe"));
+document.querySelector("#pink").addEventListener('click', () => changeColor("#ff7eb6"));
+document.querySelector("#green").addEventListener('click', () => changeColor("#42be65"));
+
+	. THIRD METHOD:
+		. Use a closure to explicitly set the body's background color to a particular value.
+		. We'll still have a changeColor function and still will accept a color value, but if we return a value, we'll create a closure over our color value.
+		. Then we can create three variables which will be invoked on button click, and use them in the event listeners.
+
+dynamic-colors.js
+-----------------
+
+function changeColor(color) {
+    return function() {
+        document.body.style.background = color;
+    }
+}
+
+const bgColorBlue = changeColor("#0f62fe");
+const bgColorPink = changeColor("#ff7eb6");
+const bgColorGreen = changeColor("#42be65");
+
+
+document.querySelector("#blue").addEventListener('click', bgColorBlue);
+document.querySelector("#pink").addEventListener('click', bgColorPink);
+document.querySelector("#green").addEventListener('click', bgColorGreen);
+
+	. Closures are some of those things that should be used intentionally, because they can create unnecessary complexity.  Often we can use a more straightforward approach to 
+	solve the same problem.
+	
+
