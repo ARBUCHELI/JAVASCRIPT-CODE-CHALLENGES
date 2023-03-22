@@ -1,3 +1,16 @@
 Technical Books
 ***************
 
+In this challenge we are going to use inheritance to create a variation of our Book class.
+
+	Challenge:
+	----------
+		. Create a TechnicalBook class that inherits from the Book class from the previous challenge.
+		. This class will also take a title, author, ISBN, and number of copies, but also will take a fifth argument, an edition.
+		. The TechnicalBook class will also provide a getEdition() function which returns the following string:
+			. The current version of this book is ... followed by the book's edition.  You should use a template literal for this phrase.
+
+	Solution:
+	---------
+		. WE USE THE extends KEYWORD TO INHERIT FROM ANOTHER CLASS:
+
