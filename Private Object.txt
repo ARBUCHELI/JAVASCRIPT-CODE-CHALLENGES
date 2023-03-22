@@ -1,2 +1,38 @@
 Private Object:
 ---------------
+
+	- JavaScript symbols: New primitive data type introduced by ES6.
+	- Every value returned by a symbol is unique --> This means that we can use them as identifiers (keys) for object properties.
+
+	Challenge:
+	----------
+		. Create a user object that has three properties:
+			. 1. Username.
+			. 2. Password.
+			. 3. Age.
+
+		. Using JavaScript symbols ensure that username and password are private fields on the user character.  This means they shouldn't be accessible by calling
+		user.username or user.password
+
+	Solution:
+	---------
+		
+private-object.js
+-----------------
+
+const username = Symbol("username");
+const password = Symbol("password");
+
+const user = {
+    //username: "buchenwolf",
+    //password: "1234566",
+    [username]: "buchenwolf",
+    [password]: "1234566",
+    age: 27,
+};
+
+console.log(user.username);
+console.log(user.password);
+
+	- Symbols are extremely useful for creating private variables, and although you probably won't see them during your day to day programming, understanding what they are
+	and what they are used for will really help your development skills.
