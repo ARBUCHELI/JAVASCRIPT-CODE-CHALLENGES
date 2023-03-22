@@ -1,3 +1,59 @@
 Ticking time
 ************
 
+	- Callback functions: --> Functions that get passed to other functions as arguments, and get called at a later point in time.
+
+	- setTimeOut: --> JavaScript function which requires a callback function.  We pass setTimeOut a function and after a certain amount of time our function gets executed.
+
+	Challenge:
+	---------
+		. Create a ticking clock in the document body.
+		. The index.html file contains a div with an ID of clock.
+		. Using callback functions and DOM manipulation output a ticking digital clock which displays the current hours, minutes, and seconds.
+
+	Solution:
+	---------
+		. As in the vegetarian dinner exercise, the first step is to grab the clock DOM node, using document.querySelector().
+		. To get the clock updated every second, use setInterval and pass 1000 ms as the second argument.
+		. The first argument will be a callback function. This callback function will create a new date, and turn it into a locale time string.
+		. Then we can set the clockNode.textContent to the new value.
+		. Finally call the clock function to see it appear in the UI.
+		. Whether we are working with setTimeOut or using callback functions after requesting data asynchronously (Take into consideration that setTimeOut is used to simulate
+		Asynchronous JavaScript).  Understanding how they work is extremely important.
+
+index.html
+----------
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01_06 Ticking Time</title>
+  </head>
+  <body>
+    <!-- Use this element to render your clock -->
+    <div id="clock"></div>
+
+    <!-- Comment out the begin.js file to see the final solution -->
+    <!-- <script src="./begin.js"></script> -->
+    <script src="./ticking-time.js"></script>
+  </body>
+</html>
+
+ticking-time.js
+---------------
+
+function clock() {
+    const clockNode = document.querySelector("#clock");
+    return setInterval(() => {
+        let date = new Date();
+        let tick = date.toLocaleTimeString();
+        clockNode.textContent = tick;
+    }, 1000);
+}
+
+clock();
+
+
+	

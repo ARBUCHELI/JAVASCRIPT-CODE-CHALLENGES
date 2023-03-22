@@ -1,0 +1,33 @@
+Classroom attendance
+********************
+
+	- Destructuring: --> Expression which allows us to extract values from objects and arrays into variables.
+	- To destructure values from arrays we use square brackets.
+	- To destructure values from objects we use curly brackets.
+	
+	- The first variable declared in the brackets will receive the first array item as its value.
+	- The second variable will receive the second array item as its value, and so on.
+	- You can use the spread operator or three dots to replace the remaining array or object values into one variable.
+
+	Example:
+	--------
+
+	const array = [1, 2, 3];
+	const[value1] = array; //value1 = 1
+	const[value1, value2] = array; //value2 = 2
+	const[value1, value2, value3] = array; //value3 = 3
+	const[value1, ...value3] = array //value3 = [2, 3]
+
+	Challenge:
+	----------
+		. Create a function called getStudents which takes one argument (classroom).
+		. classroom will contain a boolean value call hasTeachingAssistant, and classList.
+		. The first value in classList will be the teacher (Rashida).  If hasTeachingAssistant is true, the second value in the classList is the teaching assistant, and the
+		remaining values in the classList are the students.
+		. If the hasTeachingAssistant is false, the second value through the end of the class list are the students.
+		. Task --> Return a list of students.
+		. You must use object and array de-structuring.
+
+	Solution:
+	---------
+		. 
