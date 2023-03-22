@@ -1,0 +1,112 @@
+Vegetarian Dinner
+*****************
+
+	- Arrays come with many built in loops and functions that allow us to manipulate data.
+
+	- Array.filter() --> Callback function that gets run once for every item in the array, and overturns a new array of items that pass a certain criteria.
+
+	Challenge:
+	----------
+	- Planning the menu for an italian dinner.
+		. Some of your guests are vegetarians and you need to create a list of vegetarian items for them.
+		. Giving an array of italian dishes, create an unordered list of all vegetarian dinner options.
+		. Each menu item is an object containing the dish name, and a boolean variable that indicates whether the dish is vegetarian.
+		. You should dynamically generate the list items in the DOM from the array of vegetarian items.
+
+	Solution:
+	---------
+		. Use document.querySelector() to get a handle on our unordered list element which will contain our vegetarian items.
+		. We've been provided a index.html file where we can see that we already have the unordered list item provided for us.
+		
+index.html
+----------
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01_03 Vegetarian Dinner</title>
+  </head>
+  <body>
+    <!-- Use this element to render your menu -->
+    <ul id="menu"></ul>
+
+    <!-- Comment out the begin.js file to see the final solution -->
+    <!--<script src="./begin.js"></script> -->
+    <!-- Uncomment to see the final solution -->
+    <script src="./vegetarian-dinner.js"></script>
+  </body>
+</html>
+
+		. Now, let's use the array.filter method to create a new array of vegetarian dinner options.
+		. Once that we have that array, we can dynamically generate list items for each.
+		. Use the array.forEach() loop to create a list item for each vegetarian menu item.
+		. Use document.createElement() to create our list item, and then we can set the text content of that list item to the name of our current element.
+		. Finally we can append our new list item to our unordered list 
+
+vegetarian-dinner.js
+--------------------
+
+function vegetarianMenu(menu) {
+    const menuNode = document.querySelector("#menu");
+    const vegetarianOptions = menu.filter(
+        (option) => option.isVegetarian === true
+    );
+    vegetarianOptions.forEach((option) => {
+        let dish = document.createElement("li");
+        dish.textContent = option.name;
+        menuNode.appendChild(dish);
+    })
+}
+
+		. Finally, let's create a menu and pass it to our vegetarian menu function.
+		
+vegetarian-dinner.js
+--------------------
+
+function vegetarianMenu(menu) {
+    const menuNode = document.querySelector("#menu");
+    const vegetarianOptions = menu.filter(
+        (option) => option.isVegetarian === true
+    );
+    vegetarianOptions.forEach((option) => {
+        let dish = document.createElement("li");
+        dish.textContent = option.name;
+        menuNode.appendChild(dish);
+    })
+}
+
+const menu = [
+    {
+        name: "Chicken parmesan",
+        isVegetarian: false
+    },
+    {
+        name: "Stuffed shells",
+        isVegetarian: true
+    },
+    {
+        name: "Spaghetti and meatballs",
+        isVegetarian: false,
+    },
+    {
+        name: "Tiramisu",
+        isVegetarian: true,
+    }
+]
+
+vegetarianMenu(menu);
+
+
+
+
+
+
+
+
+
+
+
+
+
