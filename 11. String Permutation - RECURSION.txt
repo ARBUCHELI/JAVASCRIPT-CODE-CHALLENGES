@@ -1,3 +1,88 @@
 * String permutation
 --------------------
-	- 
+	- Recursion: When a function calls itself with an argument that gets progressively smaller and smaller, until a base case is reached.
+	- Once that base case is reached, the previous stack of executions returns and your solution is calculated.
+
+	Challenge:
+	----------
+		. Suppose you are playing Scrabble with your best friend, and you want to know how many possible combinations of letters you can make with the letters you have.
+		. Create a recursive function that takes in a string of letters and calculates the number of possible combintaions you can play.
+		. Calculating the number of possible combinations of a set of values is known as a factorial.
+		. We achieve a factorial solution by starting with the total number of items in the set and multiplying it by each proceeding number of values until we reach one.
+
+	Solution:
+	---------
+		. Let's first code an interative solution to illustrate the concept.
+
+string-permutation.js
+---------------------
+
+function numPermutations(letters) {
+	let total;
+	for (let i = 1; i <= letters.length; i++) {
+		if (total === undefined) {
+			total = i;
+			continue;
+		}
+		total *= i;
+	}
+	return total;
+}
+
+console.log(numPermutations("hello"));
+
+		. Now let's refactor it to create a recursive algorithm:
+		. We first need a base case.  This is the case that tells JavaSCript when to quit our recursive calls and return all of our previous values.
+		. In our case we want to stop when there is only one value remaining in the set of letters.
+			
+			if (letters.length === 1) {
+				return 1;
+			}
+		. If we have more than one letter in our set, we can recursively call our function with one less letter.
+		. We can use the slice string method to chop off the first letter in the set.
+		. We'll also need to multiply this recursive call with the current number of letters in the set.
+			
+			return letter.length * numPermutations(letters.slice(1));
+		
+		. Once our base case is reached, the recursive calls will bubble back up and we will have our answer.
+
+string-permutation.js
+---------------------
+/*function numPermutations(letters) {
+	let total;
+	for (let i = 1; i <= letters.length; i++) {
+		if (total === undefined) {
+			total = i;
+			continue;
+		}
+		total *= i;
+	}
+	return total;
+}
+
+console.log(numPermutations("hello"));*/
+
+//Recursive Algorithm
+
+function numPermutations(letters) {
+    if (letters.length === 1) {
+        return 1;
+    }
+    return letters.length *  numPermutations(letters.slice(1));
+}
+
+console.log(numPermutations("hello"));
+
+		. The goal of recursion is to break a complex proble down ito smaller sub-problems that can be easily solved, but don't forget to have a base case.
+
+
+
+
+
+
+
+
+
+
+
+
