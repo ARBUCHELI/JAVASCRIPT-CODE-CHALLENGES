@@ -1,5 +1,4 @@
-
--Train generator
+* Train generator
 ***************
 
 	- Generators: --> Functions that can be exited, and at a later point in time, reentered while maintaining their context.
