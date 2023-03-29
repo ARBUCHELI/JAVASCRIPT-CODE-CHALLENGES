@@ -1,0 +1,33 @@
+* URLiFY
+--------
+	- Strings: One of the core data types in JavaScript.  
+	- The string data type comes with many utility functions which we can use to find and replace characters.
+
+	Challenge:
+	----------
+		. Create a function that takes in a blog post title and returns the URL-ified version.
+		. To create a URL version of a title, all punctuation must be removed, all letters must be lowercase, and all spaces must be joined by hyphens.
+		. Use a combination of regular expressions and string prototype functions to complete the challenge.
+
+	Solution:
+	---------
+		. First remove the punctuation using the replace function.
+		. To define the set of punctuation we want to remove we can use a regular expression or regex.  To create a regex, we can use a literal notation.
+		. We need to use other methods too:
+			. toLowerCase()
+			. trim()
+			. replaceAll()
+		. Just for this exercise its necessary to take into consideration that the replaceAll method is not supported in Google Chrome.
+
+	
+URLify.js
+---------
+function urlify(blogTitle) {
+	const punctuation = /[.,/#!$%^&*;:{}=!\-_`~()'"]/g;
+	
+	const blogTitleWithoutPunctuation = blogTitle.replace(punctuation, "");
+	return blogTitleWithoutPunctuation.toLowerCase().trim().replaceAll(" ", "-");
+}
+
+console.log(urlify("How I Got Into Programming!!!"));
+console.log(urlify("I've got a new job :)"));
